@@ -2,5 +2,5 @@ setopt PROMPT_SUBST
 autoload colors
 colors
 
-PROMPT=$'%{$fg[red]%}\uf438%f%{$bg[red]%}\uf489 %k%{$fg[red]%}\uf44a%{$reset_color%}'
+PROMPT=$'%{$fg[red]%}\ue0b2%f%{$bg[red]%}\uf489 %k%{$fg[red]%}\ue0b0%{$reset_color%}'
 RPROMPT=" <>"
