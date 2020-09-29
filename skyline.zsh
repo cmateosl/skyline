@@ -1,2 +1,6 @@
-PROMPT=' \uf44a'
+skyline::symbol(unicode) {
+  echo unicode
+}
+
+PROMPT='$(skyline::unicode(\uf438)) \uf44a'
 RPROMPT=" <>"
