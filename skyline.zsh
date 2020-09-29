@@ -1,2 +1,2 @@
-PROMPT=$'\uf438\uf44a'
+PROMPT=$'\uf438 \uf489 \uf44a'
 RPROMPT=" <>"
