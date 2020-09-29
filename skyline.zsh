@@ -1,1 +1,2 @@
-PROMPT="hola"
+PROMPT="$ "
+RPROMPT=" <>"
