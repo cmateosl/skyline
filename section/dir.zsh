@@ -1,3 +1,5 @@
 skyline::dir() {
-  echo -n " %0~ "
+  skyline::setup_color black gray
+  skyline::section " %0~ "
+  skyline::reset_color
 }
