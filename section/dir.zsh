@@ -25,7 +25,7 @@ skyline::dir() {
   local icon=SKYLINE_DIR_${current_state}_ICON
   local color=SKYLINE_DIR_${current_state}_FOREGROUND
   
-  local content=" ${(P)icon} :$current_path"
+  local content=" ${(P)icon} :%0~"
   
-  skyline::section ${(P)color} $content " " " "
+  skyline::section ${(P)color} "${content}" " " " "
 }
