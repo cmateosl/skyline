@@ -1,3 +1,3 @@
 skyline::dir() {
-  echo -n " %2~ "
+  echo -n " %0~ "
 }
