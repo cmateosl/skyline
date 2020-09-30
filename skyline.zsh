@@ -32,9 +32,6 @@ skyline_prompt() {
 }
 
 prompt_skyline_setup() {
-  prompt_opts=(cr percent sp subst)
-  setopt noprompt{bang,cr,percent,subst} "prompt${^prompt_opts[@]}"
-  
   PROMPT='$(skyline_prompt)'
 }
 
