@@ -15,3 +15,8 @@ skyline::color() {
   echo -n $content
   echo -n $reset
 }
+
+skyline::bold() {
+  local content="$1"
+  echo -n "%B$content%b"
+}
