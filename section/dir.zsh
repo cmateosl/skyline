@@ -1,4 +1,31 @@
+SKYLINE_DIR_DEFAULT_FOREGROUND="${SKYLINE_DIR_DEFAULT_FOREGROUND=8}"
+SKYLINE_DIR_ETC_FOREGROUND="${SKYLINE_DIR_ETC_FOREGROUND=8}"
+SKYLINE_DIR_NOT_WRITABLE_FOREGROUND="${SKYLINE_DIR_NOT_WRITABLE_FOREGROUND=8}"
+SKYLINE_DIR_HOME_FOREGROUND="${SKYLINE_DIR_HOME_FOREGROUND=8}"
+SKYLINE_DIR_HOME_SUBFOLDER_FOREGROUND="${SKYLINE_DIR_HOME_SUBFOLDER_FOREGROUND=8}"
+SKYLINE_DIR_DEFAULT_ICON="${SKYLINE_DIR_DEFAULT_ICON=\uF115}"
+SKYLINE_DIR_ETC_ICON="${SKYLINE_DIR_ETC_ICON=\uF013}"
+SKYLINE_DIR_NOT_WRITABLE_ICON="${SKYLINE_DIR_NOT_WRITABLE_ICON=\UF023}"
+SKYLINE_DIR_HOME_ICON="${SKYLINE_DIR_HOME_ICON=\uF015}"
+SKYLINE_DIR_HOME_SUBFOLDER_ICON="${SKYLINE_DIR_HOME_SUBFOLDER_ICON=\uF07C}"
+
 skyline::dir() {
-  local content="%0~"
-  skyline::section 8 $content " " " "
+  local current_path="$(print -P '%~')"
+  local current_state="DEFAULT"
+  if [[ $current_path == '/etc'* ]]; then
+    current_state="ETC"
+  elif [[ ! -w $PWD ]]; then
+    current_state="NOT_WRITABLE"
+  elif [[ $current_path == '~' ]]; then
+    current_state="HOME"
+  elif [[ $current_path == '~'* ]]; then
+    current_state="HOME_SUBFOLDER"
+  fi
+
+  local icon=SKYLINE_DIR_${current_state}_ICON
+  local color=SKYLINE_DIR_${current_state}_FOREGROUND
+  
+  local content=" ${(P)icon} :$current_path"
+  
+  skyline::section ${(P)color} $content " " " "
 }
