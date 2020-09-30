@@ -1,5 +1,4 @@
 skyline::dir() {
-  echo -n "%F{8}"
-  skyline::section " %0~ "
-  skyline::reset_color
+  local content="%0~"
+  skyline::section 8 $content " " " "
 }
