@@ -27,11 +27,10 @@ skyline::dir() {
 
   local path_opt=$current_path
   if [[ $current_path == "/" || $current_path == "~" ]]; then
-    base_name="$(skyline::bold $current_path)"
-    current_path="$(skyline::color $current_path white)"
+    current_path="$(skyline::bold $current_path)"
   else
     base_name="$(skyline::bold $base_name)"
-    current_path="$dir_name/$(skyline::color $base_name white)"
+    current_path="$dir_name/$base_name"
   fi
 
   local icon=SKYLINE_DIR_${current_state}_ICON
