@@ -8,15 +8,12 @@ NEWLINE='
 
 skyline::section() {
   local color prefix content suffix
-  [[ -n $1 ]] && color="%F{$1}" || color="%f"
-  [[ -n $2 ]] && content="$2"   || content=""
-  [[ -n $3 ]] && prefix="$3"    || prefix=""
-  [[ -n $4 ]] && suffix="$4"    || suffix=""
+  [[ -n $1 ]] && content="$1"   || content=""
+  [[ -n $2 ]] && prefix="$2"    || prefix=""
+  [[ -n $3 ]] && suffix="$3"    || suffix=""
 
   echo -n "$prefix"
-  echo -n "%{$color%}"
   echo -n "$content"
-  echo -n "%{$f%}"
   echo -n "$suffix"
 }
 
@@ -36,6 +33,7 @@ skyline::compose_prompt() {
   skyline::first_line_prefix
 
   skyline::user
+  skyline::dir
 
   echo -n $NEWLINE
 

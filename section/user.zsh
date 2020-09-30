@@ -29,7 +29,10 @@ skyline::user() {
   skyline::user_logo
 
   skyline::setup_color white black
-  echo -n " %n "
+  skyline::section \
+    "%n" \
+    " " \
+    " "
   skyline::setup_color black white
   echo -n "$OTRO"
   skyline::reset_color
