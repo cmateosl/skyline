@@ -10,7 +10,15 @@ SKYLINE_GIT_STATUS_BEHIND="${SKYLINE_GIT_STATUS_BEHIND="⇣"}"
 SKYLINE_GIT_STATUS_DIVERGED="${SKYLINE_GIT_STATUS_DIVERGED="⇕"}"
 
 skyline::git() {
-  source "$SKYLINE_ROOT/section/git-branch.zsh"
+  local git_current_branch="$vcs_info_msg_0_"
+  [[ -z "$git_current_branch" ]] && return
   
+  source "$SKYLINE_ROOT/section/git-branch.zsh"
+  source "$SKYLINE_ROOT/section/git-status.zsh"
+  source "$SKYLINE_ROOT/section/git-remote.zsh"
+
+  skyline::git_status
+
+  skyline::git_remote_icon
   skyline::git_branch
 }
