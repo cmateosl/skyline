@@ -13,12 +13,15 @@ skyline::git() {
   local git_current_branch="$vcs_info_msg_0_"
   [[ -z "$git_current_branch" ]] && return
   
-  source "$SKYLINE_ROOT/section/git-branch.zsh"
   source "$SKYLINE_ROOT/section/git-status.zsh"
   source "$SKYLINE_ROOT/section/git-remote.zsh"
 
   skyline::git_status
 
-  skyline::git_remote_icon
-  skyline::git_branch
+  local branch_section="$(skyline::git_remote_icon) $SKYLINE_VCS_STATUS_LOCAL_BRANCH"
+  skyline::section \
+    green \
+    $branch_section \
+    "" \
+    ""
 }
