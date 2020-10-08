@@ -18,10 +18,8 @@ skyline::git() {
 
   skyline::git_status
 
-  local branch_section="$(skyline::git_remote_icon) $SKYLINE_VCS_STATUS_LOCAL_BRANCH"
-  skyline::section \
-    green \
-    $branch_section \
-    "" \
-    ""
+  skyline::git_remote_icon
+
+  skyline::git_status_icons
+  echo -n $SKYLINE_VCS_STATUS_LOCAL_BRANCH
 }
