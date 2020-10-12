@@ -12,5 +12,8 @@ skyline::git_remote_icon() {
     *gitlab*)     icon="${SKYLINE_GIT_GITLAB_ICON}";;
     *)            icon="${SKYLINE_GIT_ICON}";;
   esac
-  echo -n "$icon"
+  
+  skyline::section \
+    white \
+    $icon " " " "
 }
