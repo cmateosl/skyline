@@ -9,9 +9,12 @@ SKYLINE_GIT_STATUS_AHEAD="${SKYLINE_GIT_STATUS_AHEAD="⇡"}"
 SKYLINE_GIT_STATUS_BEHIND="${SKYLINE_GIT_STATUS_BEHIND="⇣"}"
 SKYLINE_GIT_STATUS_DIVERGED="${SKYLINE_GIT_STATUS_DIVERGED="⇕"}"
 
+skyline::is_git() {
+  [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) == true ]]
+}
+
 skyline::git() {
-  local git_current_branch="$vcs_info_msg_0_"
-  [[ -z "$git_current_branch" ]] && return
+  skyline::is_git || return
   
   source "$SKYLINE_ROOT/section/git-status.zsh"
   source "$SKYLINE_ROOT/section/git-remote.zsh"
