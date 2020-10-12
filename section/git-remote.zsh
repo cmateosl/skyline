@@ -1,3 +1,5 @@
+SKYLINE_VCS_REMOTE_PREFIX="${SKYLINE_VCS_REMOTE_PREFIX= }"
+SKYLINE_VCS_REMOTE_SUFFIX="${SKYLINE_VCS_REMOTE_SUFFIX= }"
 SKYLINE_GIT_GITHUB_ICON="${SKYLINE_GIT_GITHUB_ICON=\uf113}"
 SKYLINE_GIT_BITBUCKET_ICON="${SKYLINE_GIT_BITBUCKET_ICON=\uf171}"
 SKYLINE_GIT_GITLAB_ICON="${SKYLINE_GIT_GITLAB_ICON=\uf296}"
@@ -12,8 +14,10 @@ skyline::git_remote_icon() {
     *gitlab*)     icon="${SKYLINE_GIT_GITLAB_ICON}";;
     *)            icon="${SKYLINE_GIT_ICON}";;
   esac
-  
+
   skyline::section \
     white \
-    $icon " " " "
+    $icon \
+    $SKYLINE_VCS_REMOTE_PREFIX \
+    $SKYLINE_VCS_REMOTE_SUFFIX
 }
