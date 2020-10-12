@@ -1,3 +1,4 @@
+SKYLINE_VCS_BRANCH_PREFIX="${SKYLINE_VCS_BRANCH_PREFIX=\ue725}"
 SKYLINE_GIT_STATUS_UNTRACKED="${SKYLINE_GIT_STATUS_UNTRACKED=\uf440}" # nf-fa-question_circle
 SKYLINE_GIT_STATUS_ADDED="${SKYLINE_GIT_STATUS_ADDED="+"}" # nf-fa-plus_circle
 SKYLINE_GIT_STATUS_MODIFIED="${SKYLINE_GIT_STATUS_MODIFIED="!"}" # nf-fa-exclamation_circle
@@ -19,7 +20,7 @@ skyline::git_branch() {
     color="yellow"
   fi
   
-  skyline::section $color $SKYLINE_VCS_STATUS_LOCAL_BRANCH "" ""
+  skyline::section $color $SKYLINE_VCS_STATUS_LOCAL_BRANCH "$(skyline::color $SKYLINE_VCS_BRANCH_PREFIX $color) " ""
 }
 
 skyline::git() {
@@ -27,6 +28,8 @@ skyline::git() {
   
   source "$SKYLINE_ROOT/section/git-status.zsh"
   source "$SKYLINE_ROOT/section/git-remote.zsh"
+
+  skyline::bold "on"
 
   skyline::git_status
 
