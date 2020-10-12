@@ -35,4 +35,5 @@ skyline::git() {
 
   skyline::git_remote_icon
   skyline::git_branch
+  skyline::git_status_icons
 }
