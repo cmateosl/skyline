@@ -32,5 +32,5 @@ skyline::git_status_icons() {
     content="$SKYLINE_VCS_STATUS_MODIFIED_ICON $content"
   fi
 
-  skyline::section 226 $content " " ""
+  skyline::section 228 $content " " ""
 }

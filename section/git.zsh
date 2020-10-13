@@ -15,9 +15,9 @@ skyline::is_git() {
 }
 
 skyline::git_branch() {
-  local color="46"
+  local color="84"
   if [[ ! -z $SKYLINE_VCS_STATUS ]]; then
-    color="226"
+    color="228"
   fi
   
   skyline::section $color $SKYLINE_VCS_STATUS_LOCAL_BRANCH "$(skyline::color $SKYLINE_VCS_BRANCH_PREFIX $color) " ""
