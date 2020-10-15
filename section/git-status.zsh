@@ -44,5 +44,5 @@ skyline::git_status_icons() {
     content="$SKYLINE_VCS_STATUS_STASH_ICON $content"
   fi
 
-  skyline::section 228 $content " " ""
+  skyline::section "" $content " " ""
 }

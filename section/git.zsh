@@ -20,7 +20,7 @@ skyline::git_branch() {
     color="228"
   fi
   
-  skyline::section $color $SKYLINE_VCS_STATUS_LOCAL_BRANCH "$(skyline::color $SKYLINE_VCS_BRANCH_PREFIX $color) " ""
+  skyline::section "" $SKYLINE_VCS_STATUS_LOCAL_BRANCH "$SKYLINE_VCS_BRANCH_PREFIX " ""
 }
 
 skyline::git() {
@@ -34,6 +34,14 @@ skyline::git() {
   skyline::git_status
 
   skyline::git_remote_icon
-  skyline::git_branch
-  skyline::git_status_icons
+
+  local color=white
+  if [[ ! -z $SKYLINE_VCS_STATUS_STAGED_FILES ]]; then
+    color="84"
+  elif [[ ! -z $SKYLINE_VCS_STATUS ]]; then
+    color="228"
+  fi
+  
+  local git_local="$(skyline::git_branch)$(skyline::git_status_icons)"
+  skyline::section $color $git_local "" ""
 }
