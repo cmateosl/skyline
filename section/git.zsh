@@ -44,5 +44,5 @@ skyline::git() {
   fi
   
   local git_local="$(skyline::git_branch)$(skyline::git_status_icons)"
-  skyline::section $color $git_local " " ""
+  skyline::section $color $git_local "" ""
 }
