@@ -31,7 +31,7 @@ skyline::git_status() {
 
 skyline::git_unpushed_icon() {
   if [[ ! -z $SKYLINE_VCS_STATUS_UNPUSHED_FILES ]]; then
-    skyline::color "$SKYLINE_VCS_STATUS_UNPUSHED_ICON " white
+    skyline::color "$SKYLINE_VCS_STATUS_UNPUSHED_ICON  " white
   fi
 } 
 
