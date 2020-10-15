@@ -34,6 +34,7 @@ skyline::git() {
   skyline::git_status
 
   skyline::git_remote_icon
+  skyline::git_unpushed_icon
 
   local color=white
   if [[ ! -z $SKYLINE_VCS_STATUS_STAGED_FILES ]]; then
@@ -43,5 +44,5 @@ skyline::git() {
   fi
   
   local git_local="$(skyline::git_branch)$(skyline::git_status_icons)"
-  skyline::section $color $git_local "" ""
+  skyline::section $color $git_local " " ""
 }
