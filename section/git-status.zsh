@@ -18,7 +18,7 @@ skyline::git_status() {
   SKYLINE_VCS_STATUS_LOCAL_BRANCH=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
 
   if [ "$SKYLINE_VCS_STATUS_LOCAL_BRANCH" != "HEAD" ]; then
-    SKYLINE_VCS_STATUS_REMOTE_NAME=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} | cut -d"/" -f1)
+    SKYLINE_VCS_STATUS_REMOTE_NAME=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2> /dev/null | cut -d"/" -f1)
     SKYLINE_VCS_STATUS_REMOTE_URL=$(git config remote.$SKYLINE_VCS_STATUS_REMOTE_NAME.url)
     SKYLINE_VCS_STATUS_UNPUSHED_FILES=$(git log $SKYLINE_VCS_STATUS_REMOTE_NAME/$SKYLINE_VCS_STATUS_LOCAL_BRANCH..HEAD 2> /dev/null)
   fi
