@@ -17,23 +17,24 @@ typeset SKYLINE_VCS_STATUS_UNPUSHED_FILES
 skyline::git_status() {
   SKYLINE_VCS_STATUS_LOCAL_BRANCH=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
 
-  SKYLINE_VCS_STATUS_REMOTE_NAME=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} | cut -d"/" -f1)
-  SKYLINE_VCS_STATUS_REMOTE_URL=$(git config remote.$SKYLINE_VCS_STATUS_REMOTE_NAME.url)
+  if [ "$SKYLINE_VCS_STATUS_LOCAL_BRANCH" != "HEAD" ] then;
+    SKYLINE_VCS_STATUS_REMOTE_NAME=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} | cut -d"/" -f1)
+    SKYLINE_VCS_STATUS_REMOTE_URL=$(git config remote.$SKYLINE_VCS_STATUS_REMOTE_NAME.url)
+    SKYLINE_VCS_STATUS_UNPUSHED_FILES=$(git log $SKYLINE_VCS_STATUS_REMOTE_NAME/$SKYLINE_VCS_STATUS_LOCAL_BRANCH..HEAD 2> /dev/null)
+  fi
 
   SKYLINE_VCS_STATUS=$(git status -s 2> /dev/null)
   SKYLINE_VCS_STATUS_UNTRACKED_FILES=$(git ls-files --others --exclude-standard 2> /dev/null)
   SKYLINE_VCS_STATUS_MODIFIED_FILES=$(git ls-files -m 2> /dev/null)
   SKYLINE_VCS_STATUS_STAGED_FILES=$(git diff --name-only --cached 2> /dev/null)
   SKYLINE_VCS_STATUS_STASH_FILES=$(git stash list 2> /dev/null)
-
-  SKYLINE_VCS_STATUS_UNPUSHED_FILES=$(git log $SKYLINE_VCS_STATUS_REMOTE_NAME/$SKYLINE_VCS_STATUS_LOCAL_BRANCH..HEAD 2> /dev/null)
 }
 
 skyline::git_unpushed_icon() {
   if [[ ! -z $SKYLINE_VCS_STATUS_UNPUSHED_FILES ]]; then
     skyline::color "$SKYLINE_VCS_STATUS_UNPUSHED_ICON  " white
   fi
-} 
+}
 
 skyline::git_status_icons() {
   local content
